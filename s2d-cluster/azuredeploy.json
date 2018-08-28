@@ -61,17 +61,19 @@
         "description": "DNS domain name for existing Active Directory domain"
       }
     },
+    "vaultName": {
+      "type": "string"
+    },
+    "vaultResourceGroup": {
+      "type": "string"
+    },
+    "secretName": {
+      "type": "string"
+    },
     "adminUsername": {
       "type": "string",
       "metadata": {
         "description": "Name of the Administrator of the existing Active Directory Domain"
-      }
-    },
-    "adminPassword": {
-      "type": "securestring",
-      "minLength": 12,
-      "metadata": {
-        "description": "Password for the Administrator account of the existing Active Directory Domain"
       }
     },
     "existingVirtualNetworkRGName": {
@@ -164,7 +166,12 @@
             "value": "[parameters('adminUsername')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
           },
           "localAdminPassword": {
             "value": "[parameters('localAdminPassword')]"
