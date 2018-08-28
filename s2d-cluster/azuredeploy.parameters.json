@@ -20,6 +20,15 @@
     "existingDomainName": {
       "value": ""
     },
+    "vaultName": {
+      "value": "string"
+    },
+    "vaultResourceGroup": {
+      "value": "string"
+    },
+    "secretName": {
+      "value": "string"
+    },
     "adminUsername": {
       "value": ""
     },
