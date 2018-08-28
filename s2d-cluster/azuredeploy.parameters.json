@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nodenames": {
+        "value": [
+        "AZRAAGNVA1027",
+        "AZRAAGNVA1028"
+      ]
+    },
+    "clustername": {
+      "value": "AZRAAGNVA1025"
+    },
+    "privateIPAddresses": {
+      "value":[
+      "10.67.32.27",
+      "10.67.32.28"  
+      ]  
+    },
+    "existingDomainName": {
+      "value": ""
+    },
+    "adminUsername": {
+      "value": ""
+    },
+    "existingVirtualNetworkName": {
+      "value": "VPCxAzureMedicalNA-eastus"
+    },
+    "existingVirtualNetworkRGName": {
+      "value": "VPCxAzureMedicalNA"
+    },    
+    "existingSubnetName": {
+      "value": "AZR-001-20160212-TestSubnet"
+    },
+      "sofsName": {
+      "value": "AZRAAGNVA1026"
+    },
+    "shareName": {
+      "value": "UPD1"
+    }
+  }
+}
