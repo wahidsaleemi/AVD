@@ -1,2 +1,2 @@
-s2d-cluster/*.ignore.ps1
-s2d-cluster/*.ignore.json
+*/*.ignore.ps1
+*/*.ignore.json

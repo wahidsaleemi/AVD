@@ -1,0 +1,84 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountResourceGroupName": {
+            "value": "RDmiSH",
+            "metadata": {
+                "description": "The resource group containing the storage account of the image vhd file."
+            }
+        },
+        "rdshNamePrefix": {
+            "value": "rds",
+            "metadata": {
+                "description": "This prefix will be used in combination with the VM number to create the VM name. If using “rdsh” as the prefix, VMs would be named “rdsh-0”, “rdsh-1”, etc. You should use a unique prefix to reduce name collisions in Active Directory."
+            }
+        },
+        "rdshNumberOfInstances": {
+            "value": 2,
+            "metadata": {
+                "description": "Number of session hosts that will be created and added to the hostpool."
+            }
+        },
+        "rdshVmSize": {
+            "value": "Standard_DS1_v2",
+            "metadata": {
+                "description": "The size of the session host VMs."
+            }
+        },
+        "existingDomainUPN": {
+            "value": "",
+            "metadata": {
+                "description": "A username in the domain that has privileges to join the session hosts to the domain. For example, “user1@contoso.com”."
+            }
+        },
+        "virtualNetworkResourceGroupName": {
+            "value": "VPCxAzureMedicalNA",
+            "metadata": {
+                "description": "The resource group containing the existing virtual network."
+            }
+        },
+        "existingVnetName": {
+            "value": "VPCxAzureMedicalNA-eastus",
+            "metadata": {
+                "description": "The name of the virtual network the VMs will be connected to."
+            }
+        },
+        "existingSubnetName": {
+            "value": "AZR-001-20160212-TestSubnet",
+            "metadata": {
+                "description": "The subnet the VMs will be placed in."
+            }
+        },
+        "RDBrokerURL": {
+            "value": "https://.azurewebsites.net",
+            "metadata": {
+                "description": "The RD Broker URL of the RDmi deployment the session hosts will be connected to."
+            }
+        },
+        "ExistingTenantName": {
+            "value": "",
+            "metadata": {
+                "description": "The name of the RDS Tenant in the RDmi deployment."
+            }
+        },
+        "HostPoolName": {
+            "value": "PoolDel",
+            "metadata": {
+                "description": "The name of the hostpool to be created in the RDS Tenant."
+            }
+        },
+        "TenantAdminUPN": {
+            "value": "",
+            "metadata": {
+                "description": "The UPN that has rights in the RDS Tenant to create the hostpool. For example, “admin1@contoso.com”"
+            }
+        },
+        "baseUrl": {
+            "value": "https://raw.githubusercontent.com/wahidsaleemi/avd/rdmi-hostpool-new/",
+            "metadata": {
+                "description": "The base URL for RDmi info"
+            }
+        }
+    }
+}
