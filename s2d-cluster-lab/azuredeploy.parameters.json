@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nodenames": {
+        "value": [
+        "vm-files-1",
+        "vm-files-2"
+      ]
+    },
+    "clustername": {
+      "value": "S2DCluster"
+    },
+    "privateIPAddresses": {
+      "value":[
+      "172.16.1.10",
+      "172.16.1.11"  
+      ]  
+    },
+    "ouPath": {
+      "value": "OU=Computers,OU=ITS,DC=RDMILAB,DC=NET"
+    },
+    "existingDomainName": {
+      "value": "rdmilab.net"
+    },
+    "vaultName": {
+      "value": "kv-rdmi-secrets"
+    },
+    "vaultResourceGroup": {
+      "value": "rg-lab-core"
+    },
+    "secretName": {
+      "value": "AdminPW"
+    },
+    "adminUsername": {
+      "value": "SA-ITS-CVMS-JNJ"
+    },
+    "existingVirtualNetworkName": {
+      "value": "vnet-lab-core-eastus"
+    },
+    "existingVirtualNetworkRGName": {
+      "value": "rg-lab-core"
+    },    
+    "existingSubnetName": {
+      "value": "subnet-servers"
+    },
+      "sofsName": {
+      "value": "fileserver"
+    },
+    "shareName": {
+      "value": "UPD"
+    }
+  }
+}

@@ -1,2 +1,3 @@
 */*.ignore.ps1
 */*.ignore.json
+ignore/*
