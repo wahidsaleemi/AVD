@@ -4,8 +4,8 @@
   "parameters": {
     "nodenames": {
         "value": [
-        "vm-files-1",
-        "vm-files-2"
+        "vm-files1",
+        "vm-files2"
       ]
     },
     "clustername": {
@@ -18,7 +18,7 @@
       ]  
     },
     "ouPath": {
-      "value": "OU=Computers,OU=ITS,DC=RDMILAB,DC=NET"
+      "value": "OU=Comp,OU=ITS,DC=RDMILAB,DC=NET"
     },
     "existingDomainName": {
       "value": "rdmilab.net"
