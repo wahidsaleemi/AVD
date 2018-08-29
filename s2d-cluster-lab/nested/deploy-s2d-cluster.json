@@ -296,7 +296,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('nodenames')[copyIndex(1)],'/s2dPrep')]",
+      "name": "[concat(parameters('nodenames')[copyIndex()],'/s2dPrep')]",
       "apiVersion": "2018-06-01",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -305,7 +305,7 @@
       ],
       "copy": {
         "name": "virtualMachineExtensionLoop",
-        "count": "[sub(variables('vmCount'),1)]"
+        "count": "[sub(variables('vmCount'),0)]"
       },
       "properties": {
         "publisher": "Microsoft.Powershell",
