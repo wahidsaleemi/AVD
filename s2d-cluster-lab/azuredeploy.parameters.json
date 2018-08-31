@@ -44,11 +44,17 @@
     "existingSubnetName": {
       "value": "subnet-servers"
     },
-      "sofsName": {
+    "sofsName": {
       "value": "fileserver"
     },
     "shareName": {
       "value": "UPD"
+    },
+    "domainFQDN": {
+      "value": "RDMILAB"
+    },
+    "userAccount": {
+      "value": "Harshul"
     }
   }
 }
