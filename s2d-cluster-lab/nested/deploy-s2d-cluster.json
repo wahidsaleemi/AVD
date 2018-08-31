@@ -91,6 +91,18 @@
         "description": "Name of shared data folder on clustered Scale-Out File Server role"
       }
     },
+    "domainFQDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Domain FQDN"
+      }
+    },
+    "userAccount": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of user/group account to be added as local administrator"
+      }
+    },
     "imagePublisher": {
       "type": "string",
       "defaultValue": "MicrosoftWindowsServer"
@@ -131,6 +143,7 @@
     "vmLoopTemplateURL": "[concat(parameters('_artifactsLocation'),'/nested/newVM.json',parameters('_artifactsLocationSasToken'))]",
     "s2dPrepModulesURL": "[concat(parameters('_artifactsLocation'),'/dsc/prep-s2d.ps1.zip',parameters('_artifactsLocationSasToken'))]",
     "s2dPrepFunction": "PrepS2D.ps1\\PrepS2D",
+    "scriptURI": "[concat(parameters('_artifactsLocation'),'/Scripts/addLocalAdmin.ps1')]",
     "s2dConfigModulesURL": "[concat(parameters('_artifactsLocation'),'/dsc/config-s2d.ps1.zip',parameters('_artifactsLocationSasToken'))]",
     "s2dConfigFunction": "ConfigS2D.ps1\\ConfigS2D"
   },
@@ -329,6 +342,35 @@
             "adminPassword": "[parameters('adminPassword')]"
           }
         }
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('nodenames')[copyIndex()],'/addLocalAdmin')]",
+      "apiVersion": "2018-06-01",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "virtualMachineLoop",
+        "virtualMachineDomainLoop"
+      ],
+      "copy": {
+        "name": "virtualMachineExtensionLoop",
+        "count": "[sub(variables('vmCount'),0)]"
+      },
+      "tags": {
+          "displayName": "script"
+      },
+      "properties": {
+          "publisher": "Microsoft.Compute",
+          "type": "CustomScriptExtension",
+          "typeHandlerVersion": "1.8",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+              "fileUris": [
+                  "[variables('scriptURI')]"
+              ],
+              "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File addLocalAdmin.ps1',' -DomainFQDN \"', parameters('DomainFQDN'), '\"',' ',' -userAccount \"', parameters('userAccount'), '\"')]"
+          }
       }
     }
   ],
