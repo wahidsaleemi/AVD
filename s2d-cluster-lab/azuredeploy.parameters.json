@@ -4,8 +4,8 @@
   "parameters": {
     "nodenames": {
         "value": [
-        "vm-files1",
-        "vm-files2"
+        "vm-files3",
+        "vm-files4"
       ]
     },
     "clustername": {
@@ -13,8 +13,8 @@
     },
     "privateIPAddresses": {
       "value":[
-      "172.16.1.10",
-      "172.16.1.11"  
+      "172.16.1.13",
+      "172.16.1.14"  
       ]  
     },
     "ouPath": {
