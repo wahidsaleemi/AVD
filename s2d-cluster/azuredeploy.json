@@ -55,6 +55,12 @@
       },
       "defaultValue": 2
     },
+    "ouPath": {
+      "type": "string",
+      "metadata": {
+        "description": ""
+      }
+    },
     "existingDomainName": {
       "type": "string",
       "metadata": {
@@ -103,6 +109,18 @@
         "description": "Name of clustered Scale-Out File Server role"
       },
       "defaultValue": "fs01"
+    },
+    "domainFQDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Domain FQDN"
+      }
+    },
+    "userAccount": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of user/group account to be added as local administrator"
+      }
     },
     "shareName": {
       "type": "string",
@@ -199,6 +217,12 @@
           },
           "shareName": {
             "value": "[parameters('shareName')]"
+          },
+          "domainFQDN": {
+            "value": "[parameters('domainFQDN')]"
+          },
+          "userAccount": {
+            "value": "[parameters('userAccount')]"
           },
           "_artifactsLocation": {
             "value": "[parameters('_artifactsLocation')]"

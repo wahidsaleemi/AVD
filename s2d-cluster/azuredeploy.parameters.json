@@ -4,12 +4,12 @@
   "parameters": {
     "nodenames": {
         "value": [
-        "AZRAAGNVA1027",
-        "AZRAAGNVA1028"
+        "AZRNVAFS1",
+        "AZRNVAFS2"
       ]
     },
     "clustername": {
-      "value": "AZRAAGNVA1025"
+      "value": "AZRNVAFCL"
     },
     "privateIPAddresses": {
       "value":[
@@ -17,35 +17,44 @@
       "10.67.32.28"  
       ]  
     },
+    "ouPath": {
+      "value": ""
+    },
     "existingDomainName": {
       "value": ""
     },
     "vaultName": {
-      "value": "string"
+      "value": "RDmiKeyVault"
     },
     "vaultResourceGroup": {
-      "value": "string"
+      "value": "AZR-ABL-VPCx"
     },
     "secretName": {
-      "value": "string"
+      "value": "DomainJoinPW"
     },
     "adminUsername": {
-      "value": ""
+      "value": "SA-ITS-CVMS-JNJ"
     },
     "existingVirtualNetworkName": {
-      "value": "VPCxAzureMedicalNA-eastus"
+      "value": "EndUserRDMiNA-EastUS"
     },
     "existingVirtualNetworkRGName": {
-      "value": "VPCxAzureMedicalNA"
+      "value": "EndUserRDMiNA-VPCx"
     },    
     "existingSubnetName": {
-      "value": "AZR-001-20160212-TestSubnet"
+      "value": "AZR-ABL-EndUserRDMiNA-Test-Hybrid"
     },
       "sofsName": {
-      "value": "AZRAAGNVA1026"
+      "value": "AZRNVAFUPD"
     },
     "shareName": {
-      "value": "UPD1"
+      "value": "UPD01"
+    },
+    "domainFQDN": {
+      "value": ""
+    },
+    "userAccount": {
+      "value": ""
     }
   }
 }

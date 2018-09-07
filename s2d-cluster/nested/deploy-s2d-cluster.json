@@ -131,6 +131,7 @@
     "vmLoopTemplateURL": "[concat(parameters('_artifactsLocation'),'/nested/newVM.json',parameters('_artifactsLocationSasToken'))]",
     "s2dPrepModulesURL": "[concat(parameters('_artifactsLocation'),'/dsc/prep-s2d.ps1.zip',parameters('_artifactsLocationSasToken'))]",
     "s2dPrepFunction": "PrepS2D.ps1\\PrepS2D",
+    "scriptURI": "[concat(parameters('_artifactsLocation'),'/Scripts/addLocalAdmin.ps1')]",
     "s2dConfigModulesURL": "[concat(parameters('_artifactsLocation'),'/dsc/config-s2d.ps1.zip',parameters('_artifactsLocationSasToken'))]",
     "s2dConfigFunction": "ConfigS2D.ps1\\ConfigS2D"
   },
@@ -333,48 +334,31 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('nodenames')[0],'/s2dConfig')]",
+      "name": "[concat(parameters('nodenames')[copyIndex()],'/addLocalAdmin')]",
       "apiVersion": "2018-06-01",
       "location": "[parameters('location')]",
       "dependsOn": [
         "virtualMachineLoop",
-        "virtualMachineExtensionLoop",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('witnessStorageName'))]"
+        "virtualMachineDomainLoop"
       ],
+      "copy": {
+        "name": "virtualMachineExtensionLoop",
+        "count": "[sub(variables('vmCount'),0)]"
+      },
+      "tags": {
+          "displayName": "script"
+      },
       "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.76",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "modulesUrl": "[variables('s2dConfigModulesURL')]",
-          "configurationFunction": "[variables('s2dConfigFunction')]",
-          "properties": {
-            "domainName": "[parameters('domainName')]",
-            "clusterName": "[parameters('clusterName')]",
-            "sofsName": "[parameters('sofsName')]",
-            "shareName": "[parameters('shareName')]",
-            "nodenames": "[parameters('nodenames')]",
-            "vmDiskSize": "[parameters('vmDiskSize')]",
-            "retryCount": 6,
-            "witnessStorageName": "[variables('witnessStorageName')]",
-            "witnessStorageEndpoint": "[replace(split(reference(concat('Microsoft.Storage/storageAccounts/', variables('witnessStorageName'))).primaryEndpoints.blob, 'blob.')[1], '/', '')]",
-            "witnessStorageKey": {
-              "userName": "PLACEHOLDER-DO-NOT-USE",
-              "password": "PrivateSettingsRef:witnessStorageKey"
-            },
-            "adminCreds": {
-              "userName": "[concat(parameters('adminUsername'),'@ITS.',parameters('domainName'))]",
-              "password": "PrivateSettingsRef:adminPassword"
-            }
+          "publisher": "Microsoft.Compute",
+          "type": "CustomScriptExtension",
+          "typeHandlerVersion": "1.8",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+              "fileUris": [
+                  "[variables('scriptURI')]"
+              ],
+              "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File addLocalAdmin.ps1',' -DomainFQDN \"', parameters('DomainFQDN'), '\"',' ',' -userAccount \"', parameters('userAccount'), '\"')]"
           }
-        },
-        "protectedSettings": {
-          "items": {
-            "adminPassword": "[parameters('adminPassword')]",
-            "witnessStorageKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('witnessStorageName')),variables('apiVersionStorage')).keys[0].value]"
-          }
-        }
       }
     }
   ],
