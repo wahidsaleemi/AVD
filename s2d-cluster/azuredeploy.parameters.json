@@ -26,6 +26,9 @@
     "secretName": {
       "value": "DomainJoinPW"
     },
+    "localsecretName": {
+      "value": "LocalAdminPW"
+    },
     "adminUsername": {
       "value": "SA-ITS-CVMS-JNJ"
     },

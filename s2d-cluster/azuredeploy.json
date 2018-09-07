@@ -14,9 +14,6 @@
     "clustername": {
       "type":"string"
     },
-    "localAdminPassword": {
-      "type": "securestring"
-    },
     "storageAccountType": {
       "type": "string",
       "allowedValues": [
@@ -77,6 +74,9 @@
       "type": "string"
     },
     "secretName": {
+      "type": "string"
+    },
+    "localsecretName": {
       "type": "string"
     },
     "adminUsername": {
@@ -188,7 +188,12 @@
             }
           },
           "localAdminPassword": {
-            "value": "[parameters('localAdminPassword')]"
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(subscription().subscriptionId,  parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('localsecretName')]"
+            }
           },
           "storageAccountType": {
             "value": "[parameters('storageAccountType')]"
