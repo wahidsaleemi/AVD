@@ -17,12 +17,6 @@
       "10.67.96.11"  
       ]  
     },
-    "ouPath": {
-      "value": ""
-    },
-    "existingDomainName": {
-      "value": ""
-    },
     "vaultName": {
       "value": "RDmiKeyVault"
     },
@@ -49,12 +43,6 @@
     },
     "shareName": {
       "value": "UPD01"
-    },
-    "domainFQDN": {
-      "value": ""
-    },
-    "userAccount": {
-      "value": ""
     }
   }
 }
