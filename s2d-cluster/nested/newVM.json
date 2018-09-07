@@ -11,6 +11,9 @@
       "vmAvailabilitySetName": {
         "type": "string"
       },
+      "imageId": {
+        "type": "string"
+      },
       "vmSize": {
         "type": "string"
       },
@@ -28,18 +31,6 @@
       },
       "localAdminPassword": {
         "type": "securestring"
-      },
-      "imagePublisher": {
-        "type": "string"
-      },
-      "imageOffer": {
-        "type": "string"
-      },
-      "imageSKU": {
-        "type": "string"
-      },
-      "imageVersion": {
-        "type": "string"
       },
       "_artifactsLocation": {
         "type": "string"
@@ -109,14 +100,15 @@
           },
           "storageProfile": {
             "imageReference": {
-              "publisher": "[parameters('imagePublisher')]",
-              "offer": "[parameters('imageOffer')]",
-              "sku": "[parameters('imageSku')]",
-              "version": "[parameters('imageVersion')]"
+              "id": "[parameters('imageId')]"
             },
             "osDisk": {
               "name": "[concat(parameters('vmName'),'_OsDisk')]",
+              "osType": "Windows",
               "caching": "ReadWrite",
+              "managedDisk": {
+                    "storageaccounttype":"Premium_LRS"
+                    },
               "createOption": "FromImage"
             },
             "dataDisks": "[reference(concat(parameters('vmName'),'-diskSelection')).outputs.dataDiskArray.value]"

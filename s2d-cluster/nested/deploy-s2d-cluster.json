@@ -91,21 +91,21 @@
         "description": "Name of shared data folder on clustered Scale-Out File Server role"
       }
     },
-    "imagePublisher": {
+    "domainFQDN": {
       "type": "string",
-      "defaultValue": "MicrosoftWindowsServer"
+      "metadata": {
+        "description": "Domain FQDN"
+      }
     },
-    "imageOffer": {
+    "userAccount": {
       "type": "string",
-      "defaultValue": "WindowsServer"
+      "metadata": {
+        "description": "Name of user/group account to be added as local administrator"
+      }
     },
-    "imageSKU": {
+    "imageId": {
       "type": "string",
-      "defaultValue": "2016-Datacenter"
-    },
-    "imageVersion": {
-      "type": "string",
-      "defaultValue": "latest"
+      "defaultValue": "/subscriptions/3129caf0-bff9-4c23-a15f-1be2a62b02b3/resourceGroups/EndUserRDMiNA-Images/providers/Microsoft.Compute/images/w2016-2018q2v1-eastus"
     },
     "_artifactsLocation": {
       "type": "string"
@@ -249,17 +249,8 @@
           "_artifactsLocationSasToken": {
             "value": "[parameters('_artifactsLocationSasToken')]"
           },
-          "imagePublisher": {
-            "value": "[parameters('imagePublisher')]"
-          },
-          "imageOffer": {
-            "value": "[parameters('imageOffer')]"
-          },
-          "imageSKU": {
-            "value": "[parameters('imageSKU')]"
-          },
-          "imageVersion": {
-            "value": "[parameters('imageVersion')]"
+          "imageId": {
+            "value": "[parameters('imageId')]"
           }
         }
       }
