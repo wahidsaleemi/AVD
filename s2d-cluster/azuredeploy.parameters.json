@@ -21,7 +21,7 @@
       "value": "RDmiKeyVault"
     },
     "vaultResourceGroup": {
-      "value": "AZR-ABL-VPCx"
+      "value": "AZR-ABL-EndUserRDMiNA-Production"
     },
     "secretName": {
       "value": "DomainJoinPW"
