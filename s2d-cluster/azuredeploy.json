@@ -107,8 +107,7 @@
       "type": "string",
       "metadata": {
         "description": "Name of clustered Scale-Out File Server role"
-      },
-      "defaultValue": "fs01"
+      }
     },
     "domainFQDN": {
       "type": "string",
