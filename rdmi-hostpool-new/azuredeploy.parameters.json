@@ -15,13 +15,13 @@
             }
         },
         "vaultName": {
-            "value": "myKeyVault"
+            "value": "RDmiKeyVault"
         },
         "vaultResourceGroup": {
-            "value": "keyvault-rg"
+            "value": "AZR-ABL-EndUserRDMiNA-Production"
         },
         "secretName": {
-            "value": "mySecret"
+            "value": "DomainJoinPW"
         },
         "rdshNumberOfInstances": {
             "value": 2,
@@ -42,19 +42,19 @@
             }
         },
         "virtualNetworkResourceGroupName": {
-            "value": "VPCxAzureMedicalNA",
+            "value": "EndUserRDMiNA-VPCx",
             "metadata": {
                 "description": "The resource group containing the existing virtual network."
             }
         },
         "existingVnetName": {
-            "value": "VPCxAzureMedicalNA-eastus",
+            "value": "EndUserRDMiNA-EastUS",
             "metadata": {
                 "description": "The name of the virtual network the VMs will be connected to."
             }
         },
         "existingSubnetName": {
-            "value": "AZR-001-20160212-TestSubnet",
+            "value": "AZR-ABL-EndUserRDMiNA-Test-Hybrid",
             "metadata": {
                 "description": "The subnet the VMs will be placed in."
             }
