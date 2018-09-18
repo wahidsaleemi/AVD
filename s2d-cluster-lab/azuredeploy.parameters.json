@@ -4,8 +4,8 @@
   "parameters": {
     "nodenames": {
         "value": [
-        "vm-files3",
-        "vm-files4"
+        "vm-files1",
+        "vm-files2"
       ]
     },
     "clustername": {
@@ -13,18 +13,18 @@
     },
     "privateIPAddresses": {
       "value":[
-      "172.16.1.13",
-      "172.16.1.14"  
+      "10.0.0.11",
+      "10.0.0.12"  
       ]  
     },
     "ouPath": {
-      "value": "OU=Comp,OU=ITS,DC=RDMILAB,DC=NET"
+      "value": "OU=COMP,OU=ITS,DC=JNJTEST,DC=COM"
     },
     "existingDomainName": {
-      "value": "rdmilab.net"
+      "value": "jnjtest.com"
     },
     "vaultName": {
-      "value": "kv-rdmi-secrets"
+      "value": "kv-jnj-secrets"
     },
     "vaultResourceGroup": {
       "value": "rg-lab-core"
@@ -33,16 +33,16 @@
       "value": "AdminPW"
     },
     "adminUsername": {
-      "value": "SA-ITS-CVMS-JNJ"
+      "value": "VMAdmin"
     },
     "existingVirtualNetworkName": {
-      "value": "vnet-lab-core-eastus"
+      "value": "adVNET"
     },
     "existingVirtualNetworkRGName": {
       "value": "rg-lab-core"
     },    
     "existingSubnetName": {
-      "value": "subnet-servers"
+      "value": "adSubnet"
     },
     "sofsName": {
       "value": "fileserver"
@@ -51,7 +51,7 @@
       "value": "UPD"
     },
     "domainFQDN": {
-      "value": "RDMILAB"
+      "value": "JNJTEST"
     },
     "userAccount": {
       "value": "Harshul"
