@@ -4,8 +4,8 @@
   "parameters": {
     "nodenames": {
         "value": [
-        "vm-files3",
-        "vm-files4"
+        "vm-files5",
+        "vm-files6"
       ]
     },
     "clustername": {
@@ -13,8 +13,8 @@
     },
     "privateIPAddresses": {
       "value":[
-      "172.16.1.11",
-      "172.16.1.12"  
+      "172.16.1.15",
+      "172.16.1.16"  
       ]  
     },
     "ouPath": {
@@ -33,7 +33,7 @@
       "value": "AdminPW"
     },
     "adminUsername": {
-      "value": "VMAdmin"
+      "value": "harshulp"
     },
     "existingVirtualNetworkName": {
       "value": "vnet-rdmi-eastus"
