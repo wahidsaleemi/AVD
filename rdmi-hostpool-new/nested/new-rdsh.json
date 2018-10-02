@@ -127,7 +127,6 @@
         "HostPoolFriendlyName": "Hostpool",
         "HostPoolDescription": "template through create hostpool",
         "RegistrationExpirationHours": "48",
-        "storageaccount": "[parameters('diagnosticStorageAccountName')]",
         "scriptURI": "[concat(parameters('_artifactsLocation'),'/Scripts/Script.ps1')]",
         "deployAgentURI": "[concat(parameters('_artifactsLocation'),'/Scripts/DeployAgent.zip')]"
     },
@@ -217,7 +216,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
-                        "storageUri": "[reference(variables('storageaccount'), '2016-01-01').primaryEndpoints.blob]"
+                        "storageUri": "[reference(resourceId(parameters('diagnosticStorageAccountName'), '2016-01-01').primaryEndpoints.blob)]"
                     }
                 }
             }
