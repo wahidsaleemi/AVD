@@ -23,7 +23,7 @@
             "metadata": {
                 "description": "The size of the session host VMs."
             },
-            "defaultValue": "Standard_A2"
+            "defaultValue": "Standard_DS2_v3"
         },
         "diagnosticStorageAccountName": {
             "type": "string"
@@ -121,7 +121,7 @@
         }
     },
     "variables": {
-        "rdshPrefix": "[concat(parameters('rdshNamePrefix'),'-')]",
+        "rdshPrefix": "[concat(parameters('rdshNamePrefix'))]",
         "existingDomainUsername": "[first(split(parameters('existingDomainUPN'), '@'))]",
         "subnet-id": "[concat(resourceId(parameters('virtualNetworkResourceGroupName'),'Microsoft.Network/virtualNetworks',parameters('existingVnetName')),'/subnets/',parameters('existingSubnetName'))]",
         "HostPoolFriendlyName": "Hostpool",

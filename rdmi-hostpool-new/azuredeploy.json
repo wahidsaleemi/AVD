@@ -47,7 +47,7 @@
             }
         },
         "localAdminPassword": {
-            "type": "string"
+            "type": "securestring"
         },
         "existingDomainFqdn": {
             "type": "string",
