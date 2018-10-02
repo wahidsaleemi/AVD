@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccountResourceGroupName": {
-            "type": "string",
-            "metadata": {
-                "description": "The resource group containing the storage account of the image vhd file."
-            }
-        },
         "imageId": {
             "type": "string"
         },
@@ -89,7 +83,7 @@
                 "description": "The name of the hostpool to be created in the RDS Tenant."
             }
         },
-        "oupath": {
+        "ouPath": {
             "type": "string",
             "metadata": {
               "description": "Specifies an organizational unit (OU) for the domain account. Enter the full distinguished name of the OU in quotation marks. Example: \"OU=testOU; DC=domain; DC=Domain; DC=com"
@@ -115,6 +109,13 @@
                 "description": "The base URL for RDmi info"
             },
             "defaultValue": "https://raw.githubusercontent.com/wahidsaleemi/avd/rdmi-hostpool-new/"
+        },
+        "_artifactsLocationSasToken": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+            },
+            "defaultValue": ""
         }
     },
     "variables": {
@@ -125,7 +126,7 @@
         "HostPoolDescription": "template through create hostpool",
         "RegistrationExpirationHours": "48",
         "storageAccountName1": "rdmishdiags",
-        "storageaccount": "[concat(resourceId(parameters('storageAccountResourceGroupName'),'Microsoft.Storage/storageAccounts',variables('storageAccountName1')))]",
+        "storageaccount": "[variables('storageAccountName1')]",
         "scriptURI": "[concat(parameters('_artifactsLocation'),'/Scripts/Script.ps1')]",
         "deployAgentURI": "[concat(parameters('_artifactsLocation'),'/Scripts/DeployAgent.zip')]"
     },
@@ -156,7 +157,7 @@
         {
             "apiVersion": "2018-06-01",
             "type": "Microsoft.Compute/availabilitySets",
-            "name": "[concat(variables('rdshPrefix'), 'availabilitySet')]",
+            "name": "[concat(variables('rdshPrefix'), '-avset')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "platformFaultDomainCount": 3,
@@ -177,14 +178,14 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('rdshPrefix'), copyindex(), '-nic')]",
-                "[concat('Microsoft.Compute/availabilitySets/', variables('rdshPrefix'), 'availabilitySet')]"
+                "[concat('Microsoft.Compute/availabilitySets/', variables('rdshPrefix'), '-avset')]"
             ],
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "[parameters('rdshVmSize')]"
                 },
                 "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets/', concat(variables('rdshPrefix'), 'availabilitySet'))]"
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets/', concat(variables('rdshPrefix'), '-avset'))]"
                 },
                 "osProfile": {
                     "computerName": "[concat(variables('rdshPrefix'), copyindex())]",
@@ -200,7 +201,7 @@
                         "osType": "Windows",
                         "caching": "ReadWrite",
                         "managedDisk": {
-                            "storageaccounttype":"Premium_LRS"
+                            "storageaccounttype":"Standard_LRS"
                         },
                         "createOption": "FromImage"
                     }

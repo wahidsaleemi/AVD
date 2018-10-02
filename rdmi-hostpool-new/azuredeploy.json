@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccountResourceGroupName": {
-            "type": "string",
-            "metadata": {
-                "description": "The resource group containing the storage account of the image vhd file."
-            }
-        },
         "imageId": {
             "type": "string"
         },
@@ -47,12 +41,6 @@
             "type": "string",
             "metadata": {
                 "description": "A username in the domain that has privileges to join the session hosts to the domain. For example, “user1@contoso.com”."
-            }
-        },
-        "existingDomainPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "The password that corresponds to the existing domain username."
             }
         },
         "localAdminPassword": {
@@ -101,7 +89,7 @@
                 "description": "The name of the hostpool to be created in the RDS Tenant."
             }
         },
-        "oupath": {
+        "ouPath": {
             "type": "string",
             "metadata": {
                 "description": "Specifies an organizational unit (OU) for the domain account. Enter the full distinguished name of the OU in quotation marks. Example: \"OU=testOU; DC=domain; DC=Domain; DC=com"
@@ -112,13 +100,6 @@
             "defaultvalue": "",
             "metadata": {
                 "description": "The UPN that has rights in the RDS Tenant to create the hostpool. For example, “admin1@contoso.com”"
-            }
-        },
-        "TenantAdminPassword": {
-            "type": "securestring",
-            "defaultvalue": "",
-            "metadata": {
-                "description": "The password that corresponds to the tenant admin UPN."
             }
         },
         "_artifactsLocation": {
@@ -152,9 +133,6 @@
                 "contentVersion": "1.0.0.0"
             },
             "parameters": {
-                "storageAccountResourceGroupName": {
-                    "value": "[parameters('storageAccountResourceGroupName')]"
-                },
                 "imageId": {
                     "value": "[parameters('imageId')]"
                 },

@@ -60,15 +60,14 @@
         }
     },
     "variables": {
-        "nicName": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('vmName'),'-nic'))]",
-        "vmAvailabilitySetName": "[concat(parameters('vmName'), '-avset')]",
+        "nicName": "[concat(parameters('vmName'),'-nic')]",
         "subnetRef": "[resourceId(parameters('existingVirtualNetworkRGName'),'Microsoft.Network/virtualNetworks/subnets',parameters('existingVirtualNetworkName'),parameters('existingSubnetName'))]",
         "imageId": "[resourceId('',parameters('imageId'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Compute/availabilitySets",
-            "name": "[variables('vmAvailabilitySetName')]",
+            "name": "[parameters('vmAvailabilitySetName')]",
             "apiVersion": "2017-03-30",
             "location": "[parameters('location')]",
             "properties": {
@@ -105,7 +104,7 @@
             "name": "[parameters('vmName')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/',variables('nicName'))]",
-                "[concat('Microsoft.Compute/availabilitySets/', variables('vmAvailabilitySetName'))]"
+                "[concat('Microsoft.Compute/availabilitySets/', parameters('vmAvailabilitySetName'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -132,7 +131,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[variables('nicName')]"
+                            "id": "[resourceId('Microsoft.Network/', variables('nicName'))]"
                         }
                     ]
                 }

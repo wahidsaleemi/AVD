@@ -2,10 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccountResourceGroupName": {
-            "value": "RDmiSH",
+        "imageId": {
+            "value": "/subscriptions/5588768f-183d-4285-8a7a-6efdcc26b552/resourceGroups/rg-lab-core/providers/Microsoft.Compute/images/Win10ERS17743",
             "metadata": {
-                "description": "The resource group containing the storage account of the image vhd file."
+                "description": "Full path to resource id."
             }
         },
         "rdshNamePrefix": {
@@ -15,13 +15,13 @@
             }
         },
         "vaultName": {
-            "value": "RDmiKeyVault"
+            "value": "kv-jnj-secrets"
         },
         "vaultResourceGroup": {
-            "value": "AZR-ABL-EndUserRDMiNA-Production"
+            "value": "rg-lab-core"
         },
         "secretName": {
-            "value": "DomainJoinPW"
+            "value": "AdminPW"
         },
         "rdshNumberOfInstances": {
             "value": 2,
@@ -35,26 +35,32 @@
                 "description": "The size of the session host VMs."
             }
         },
+        "existingDomainFqdn": {
+            "value": "wahidsaleemi.net"
+        },
+        "ouPath": {
+            "value": "OU=Computers,OU=Org1,DC=wahidsaleemi,DC=net"
+        },
         "existingDomainUPN": {
-            "value": "",
+            "value": "vmadmin@wahidsaleemi.net",
             "metadata": {
                 "description": "A username in the domain that has privileges to join the session hosts to the domain. For example, “user1@contoso.com”."
             }
         },
         "virtualNetworkResourceGroupName": {
-            "value": "EndUserRDMiNA-VPCx",
+            "value": "rg-avd-network",
             "metadata": {
                 "description": "The resource group containing the existing virtual network."
             }
         },
         "existingVnetName": {
-            "value": "EndUserRDMiNA-EastUS",
+            "value": "vnet-rdmi-eastus",
             "metadata": {
                 "description": "The name of the virtual network the VMs will be connected to."
             }
         },
         "existingSubnetName": {
-            "value": "AZR-ABL-EndUserRDMiNA-Test-Hybrid",
+            "value": "hosts",
             "metadata": {
                 "description": "The subnet the VMs will be placed in."
             }
@@ -72,19 +78,19 @@
             }
         },
         "HostPoolName": {
-            "value": "PoolDel",
+            "value": "pool-lab-testapps",
             "metadata": {
                 "description": "The name of the hostpool to be created in the RDS Tenant."
             }
         },
         "TenantAdminUPN": {
-            "value": "",
+            "value": "vmadmin@wahidsaleemi.net",
             "metadata": {
                 "description": "The UPN that has rights in the RDS Tenant to create the hostpool. For example, “admin1@contoso.com”"
             }
         },
         "_artifactsLocation": {
-            "value": "https://raw.githubusercontent.com/wahidsaleemi/avd/rdmi-hostpool-new/",
+            "value": "https://raw.githubusercontent.com/wahidsaleemi/avd/master/rdmi-hostpool-new/",
             "metadata": {
                 "description": "The base URL for RDmi info"
             }
