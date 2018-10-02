@@ -35,6 +35,9 @@
                 "description": "The size of the session host VMs."
             }
         },
+        "diagnosticStorageAccountName": {
+            "value": "rdsdiagnosticlogs"
+        },
         "existingDomainFqdn": {
             "value": "wahidsaleemi.net"
         },

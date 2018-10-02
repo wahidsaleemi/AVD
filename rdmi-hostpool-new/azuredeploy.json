@@ -37,6 +37,9 @@
             },
             "defaultValue": "Standard_A2"
         },
+        "diagnosticStorageAccountName": {
+            "type": "string"
+        },
         "existingDomainUPN": {
             "type": "string",
             "metadata": {
@@ -144,6 +147,9 @@
                 },
                 "rdshVmSize": {
                     "value": "[parameters('rdshVmSize')]"
+                },
+                "diagnosticStorageAccountName": {
+                    "value": "[parameters('diagnosticStorageAccountName')]"
                 },
                 "existingDomainUPN": {
                     "value": "[parameters('existingDomainUPN')]"

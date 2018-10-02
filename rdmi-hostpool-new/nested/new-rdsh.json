@@ -25,6 +25,9 @@
             },
             "defaultValue": "Standard_A2"
         },
+        "diagnosticStorageAccountName": {
+            "type": "string"
+        },
         "existingDomainUPN": {
             "type": "string",
             "metadata": {
@@ -107,8 +110,7 @@
             "type": "string",
             "metadata": {
                 "description": "The base URL for RDmi info"
-            },
-            "defaultValue": "https://raw.githubusercontent.com/wahidsaleemi/avd/rdmi-hostpool-new/"
+            }
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -125,8 +127,7 @@
         "HostPoolFriendlyName": "Hostpool",
         "HostPoolDescription": "template through create hostpool",
         "RegistrationExpirationHours": "48",
-        "storageAccountName1": "rdmishdiags",
-        "storageaccount": "[variables('storageAccountName1')]",
+        "storageaccount": "[parameters('diagnosticStorageAccountName')]",
         "scriptURI": "[concat(parameters('_artifactsLocation'),'/Scripts/Script.ps1')]",
         "deployAgentURI": "[concat(parameters('_artifactsLocation'),'/Scripts/DeployAgent.zip')]"
     },
@@ -215,7 +216,7 @@
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
-                        "enabled": false,
+                        "enabled": true,
                         "storageUri": "[reference(variables('storageaccount'), '2016-01-01').primaryEndpoints.blob]"
                     }
                 }
