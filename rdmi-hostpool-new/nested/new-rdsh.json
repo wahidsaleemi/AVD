@@ -190,7 +190,10 @@
                 "osProfile": {
                     "computerName": "[concat(variables('rdshPrefix'), copyindex())]",
                     "adminUsername": "[variables('existingDomainUsername')]",
-                    "adminPassword": "[parameters('localAdminPassword')]"
+                    "adminPassword": "[parameters('localAdminPassword')]",
+                    "windowsConfiguration": {
+                        "enableAutomaticUpdates": false
+                    }
                 },
                 "storageProfile": {
                     "imageReference": {
