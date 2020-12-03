@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "enterpriseScaleCompanyPrefix": {
+            "value": "oig"
+        },
+        "managementSubscriptionId": {
+            "value": "f97b7d65-7dfe-4e86-b13b-92181d9ea891" //This is the onewahid@live.com subscription
+        },
+        "connectivitySubscriptionId": {
+            "value": "f97b7d65-7dfe-4e86-b13b-92181d9ea891" //This is the onewahid@live.com subscription
+        },
+        "lzSubscriptionId": {
+            "value": "f97b7d65-7dfe-4e86-b13b-92181d9ea891" //This is the onewahid@live.com subscription
+        },
+        "location": {
+            "value": "eastus2" // TODO: Fill in parameter value
+        }
+    }
+}
